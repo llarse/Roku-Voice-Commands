@@ -8,7 +8,7 @@ dotenv.load_dotenv()
 
 class RokuController:
     def __init__(self):
-        self.roku_ip = os.get_env("ROKUIP")
+        self.roku_ip = os.getenv("ROKUIP")
 
     def send_command(self, command):
         url = f"http://{self.roku_ip}:8060/keypress/{command}"

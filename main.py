@@ -20,19 +20,18 @@ def main():
     r = sr.Recognizer()
     mic = sr.Microphone()
 
-    # Establish the Roku controller
-
-    # Start listening for commands
-    audio = new_audio(mic, r)
-
     # Initialize the voice controller
     vc = VoiceController()
 
-    # Require keyboard interupt to stop
+    # Start listening for commands
     print('Audio commands started. Press Ctrl+C to exit')
+    audio = new_audio(mic, r)
+
+    # Require keyboard interupt to stop
     while True:
         try:
             text = r.recognize_google(audio)
+            print(text)
         except sr.UnknownValueError:
             print("Could not understand audio")
             continue
@@ -42,7 +41,7 @@ def main():
             continue
 
         # Output the text to the console if what they said was recognized
-        if config['Verbose']:
+        if config["Verbose"]:
             print("You said: {}".format(text))
 
         # Let the voice controller know what they said
