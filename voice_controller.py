@@ -18,20 +18,22 @@ class VoiceController(RokuController):
 
     def execute(self, text):
         ''' Determine whether the text is a valid command and then execute it '''
+        # Text handling
+        text = text.lower()
+
         # Exit anytime the command is invalid - only need 1 error return
         while True:
-            # Text handling
-            text = text.lower()
             # Currently, commands are 2 words - so remove anything extra caught
             try:
-                text = text.split()[:1]
+                text = text.split()[:2]
             except IndexError:
                 # command is only one word, not a valid command
                 break
             # rejoin the text
-
+            text = " ".join(text)
+            print(text)
             # Determine if its a roku command
-            if str(text).startswith("roku"):
+            if text.startswith("roku"):
                 # Determine if its a valid roku command
                 if text in self.commands:
                     # Execute the command
