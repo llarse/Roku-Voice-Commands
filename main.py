@@ -32,7 +32,6 @@ def main():
         audio = new_audio(mic, r)
         try:
             text = r.recognize_google(audio)
-            print(text)
         except sr.UnknownValueError:
             print("Could not understand audio")
             continue
