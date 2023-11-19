@@ -25,10 +25,11 @@ def main():
 
     # Start listening for commands
     print('Audio commands started. Press Ctrl+C to exit')
-    audio = new_audio(mic, r)
 
     # Require keyboard interupt to stop
     while True:
+        # Listen for a new command
+        audio = new_audio(mic, r)
         try:
             text = r.recognize_google(audio)
             print(text)
@@ -51,9 +52,6 @@ def main():
         except KeyError:
             # What they said was not a valid command, we dont care
             pass
-
-        # Listen for a new command
-        audio = new_audio(mic, r)
 
 
 if __name__ == '__main__':

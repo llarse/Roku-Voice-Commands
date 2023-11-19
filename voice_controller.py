@@ -31,7 +31,7 @@ class VoiceController(RokuController):
             # rejoin the text
 
             # Determine if its a roku command
-            if text.startswith("roku"):
+            if str(text).startswith("roku"):
                 # Determine if its a valid roku command
                 if text in self.commands:
                     # Execute the command
