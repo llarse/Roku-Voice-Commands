@@ -33,7 +33,8 @@ def main():
         try:
             text = r.recognize_google(audio)
         except sr.UnknownValueError:
-            print("Could not understand audio")
+            if config["Verbose"]:
+                print("Could not understand audio")
             continue
         except sr.RequestError as e:
             print(
